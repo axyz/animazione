@@ -19,7 +19,8 @@
     <script src="../dist/animazione.js"></script>
     <script>
       var box = document.querySelector('.box');
-      var t = new Animazione(box, render, {
+      var t = new Animazione(render, {
+        target: box,
         duration: 500,
         endValue: 500,
         easing: 'easeInOutSin',

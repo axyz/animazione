@@ -2,10 +2,12 @@ import easingFunctions from './easing';
 import { raf, caf } from './request-animation-frame';
 
 const TIME_TOLERANCE = 8;
+const noop = () => {};
 
 class Animazione {
-  constructor(target, render, opts = {}) {
+  constructor(render = noop, opts = {}) {
     const {
+      target = null,
       duration = 0,
       initialValue = 0,
       endValue = 100,
