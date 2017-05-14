@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animazione example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: red;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script src="../dist/animazione.js"></script>
+    <script>
+      var box = document.querySelector('.box');
+      var t = new Animazione(box, render, {
+        duration: 500,
+        endValue: 500,
+        easing: 'easeInOutSin',
+      });
+      t.start();
+
+      function render(val) {
+        this.style['left'] = val + 'px';
+      }
+    </script>
+  </body>
+</html>
