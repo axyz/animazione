@@ -1,7 +1,8 @@
 const path = require('path');
 
 const config = {
-  entry: './src/animazione.js',
+  entry: './index.js',
+  target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'animazione.js',
