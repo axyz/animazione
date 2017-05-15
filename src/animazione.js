@@ -40,13 +40,14 @@ class Animazione {
         this._updateValue();
         this._render(this._value);
         if (this._value === this._endValue) {
-          this.stop();
           if (this._animations.length > 0) {
             const nextAnimation = this._animations.shift();
             this._initializeAnimation(nextAnimation);
             if (this._loop) this._animations.push(nextAnimation);
             this._id = raf(this._tick);
           }
+          this.stop();
+          return;
         }
       }
       this._id = raf(this._tick);
