@@ -19,16 +19,35 @@
     <script src="../dist/animazione.js"></script>
     <script>
       var box = document.querySelector('.box');
-      var t = new Animazione(render, {
+      var t = new Animazione({
+        render: renderLeft,
         target: box,
         duration: 500,
+        initialValue: 0,
         endValue: 500,
         easing: t => t,
-      });
-      t.start();
+      }).wait(500).andThen({
+        render: renderTop,
+        duration: 500,
+        initialValue: 0,
+        endValue: 500,
+      }).wait(500).andThen({
+        render: renderLeft,
+        duration: 500,
+        initialValue: 500,
+        endValue: 0,
+      }).wait(500).andThen({
+        render: renderTop,
+        duration: 500,
+        initialValue: 500,
+        endValue: 0,
+      }).wait(500).loop().start();
 
-      function render(val) {
+      function renderLeft(val) {
         this.style['left'] = val + 'px';
+      }
+      function renderTop(val) {
+        this.style['top'] = val + 'px';
       }
     </script>
   </body>
