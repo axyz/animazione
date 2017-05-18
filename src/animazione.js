@@ -1,6 +1,6 @@
 const { raf, caf } = require('./request-animation-frame');
 
-const TIME_TOLERANCE = 8;
+const TOLERANCE_THRESHOLD = 0.1;
 const noop = () => {};
 const linearEasing = t => t;
 
@@ -35,18 +35,20 @@ class Animazione {
     this._initializeAnimation(this._firstAnimation);
     this._tick = (time) => {
       this._lastTime = time || 0;
-      if (!this._lastTime || time >= (this._nextTime - TIME_TOLERANCE)) {
+      if (!this._lastTime || time >= (this._nextTime - TOLERANCE_THRESHOLD)) {
         this._nextTime = this._lastTime + this._frameDuration;
         this._updateValue();
         this._render(this._value);
         if (this._value === this._endValue) {
           if (this._animations.length > 0) {
+            this._onComplete();
             const nextAnimation = this._animations.shift();
             this._initializeAnimation(nextAnimation);
             if (this._loop) this._animations.push(nextAnimation);
             this._id = raf(this._tick);
+            return
           }
-          this.stop();
+            this.stop();
           return;
         }
       }
@@ -121,7 +123,6 @@ class Animazione {
   stop() {
     if (this._id) {
       caf(this._id);
-      this._onComplete();
     }
   }
 }

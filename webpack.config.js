@@ -5,6 +5,7 @@ const config = {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: "dist/",
     filename: 'animazione.js',
     library: 'Animazione',
     libraryTarget: 'umd',
@@ -13,7 +14,10 @@ const config = {
     rules: [
       {test: /\.(js|jsx)$/, use: 'babel-loader'}
     ]
-  }
+  },
+  devServer: {
+    contentBase: "./example/",
+  },
 };
 
 module.exports = config;

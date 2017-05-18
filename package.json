@@ -1,6 +1,6 @@
 {
   "name": "animazione",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "simple easing animations using requestAnimationFrame",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "babel-loader": "7.0.0",
     "babel-preset-babili": "0.0.12",
     "babel-preset-env": "1.4.0",
-    "webpack": "2.5.1"
+    "webpack": "2.5.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }

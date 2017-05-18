@@ -11,41 +11,44 @@
         background-color: red;
         width: 100px;
         height: 100px;
+        box-shadow: 10px 10px 50px #888;
+        border: 2px solid #444;
+        border-radius: 50px;
       }
     </style>
   </head>
   <body>
     <div class="box"></div>
-    <script src="../dist/animazione.js"></script>
+    <script src="dist/animazione.js"></script>
     <script>
       var box = document.querySelector('.box');
       var t = new Animazione({
         render: renderLeft,
         target: box,
-        duration: 500,
+        duration: 400,
         initialValue: 0,
         endValue: 500,
-        easing: t => t,
-        onComplete: () => { console.log('first finished') }
-      }).wait(500).andThen({
+        easing: t => -0.5 * (Math.cos(Math.PI*t) - 1),
+        onComplete: () => { console.log('first finished') },
+      }).andThen({
         render: renderTop,
-        duration: 500,
+        duration: 400,
         initialValue: 0,
         endValue: 500,
         onComplete: () => { console.log('second finished') }
-      }).wait(500).andThen({
+      }).andThen({
         render: renderLeft,
-        duration: 500,
+        duration: 400,
         initialValue: 500,
         endValue: 0,
         onComplete: () => { console.log('third finished') }
-      }).wait(500).andThen({
+      }).andThen({
         render: renderTop,
-        duration: 500,
+        duration: 400,
         initialValue: 500,
         endValue: 0,
         onComplete: () => { console.log('fourth finished') }
-      }).wait(500).loop().start();
+      }).loop().start();
 
       function renderLeft(val) {
         this.style['left'] = val + 'px';
