@@ -48,6 +48,7 @@ class Animazione {
             this._id = raf(this._tick);
             return
           }
+            this._onComplete();
             this.stop();
           return;
         }
