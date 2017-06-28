@@ -1,8 +1,8 @@
 {
   "name": "animazione",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "simple easing animations using requestAnimationFrame",
-  "main": "index.js",
+  "main": "dist/animazione.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "start": "webpack-dev-server",
