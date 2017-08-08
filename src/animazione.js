@@ -1,6 +1,6 @@
 const { raf, caf } = require('./request-animation-frame');
 
-const TOLERANCE_THRESHOLD = 0.25;
+const TOLERANCE_THRESHOLD = 0.667;
 const noop = () => {};
 const linearEasing = t => t;
 
@@ -11,7 +11,7 @@ class Animazione {
       target = null,
       duration = 0,
       initialValue = 0,
-      endValue = 100,
+      endValue = 1,
       easing = linearEasing,
       fps = 60,
       onComplete = noop,
@@ -107,11 +107,11 @@ class Animazione {
     return this;
   }
 
-  wait(time) {
+  wait(duration) {
     this._animations.push({
       render: noop,
-      duration: time,
-      endValue: time,
+      duration: duration,
+      endValue: duration,
     });
     return this;
   }
